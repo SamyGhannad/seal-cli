@@ -1,0 +1,20 @@
+# Compiled binary outputs (we build into bin/ so source tree stays clean)
+/bin/
+
+# Go test artifacts
+*.test
+*.out
+coverage.txt
+
+# Release artifacts (cross-compiled binaries from the release workflow)
+/dist/
+
+# Lockfile sidecar files (per SPEC §File Locking; gitignored as machine-local state)
+seal.json.lock
+seal.json.tmp.*
+
+# Local Claude Code state (per-user, not shared)
+.claude/settings.local.json
+
+# JetBrains IDE files
+.idea/
