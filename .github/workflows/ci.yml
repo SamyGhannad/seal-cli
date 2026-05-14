@@ -1,11 +1,11 @@
 # CI for the seal CLI.
 #
 # Runs on every push to main and every PR. The matrix exists for two
-# reasons: (1) the SPEC's "case-true path resolution" rule (§372)
-# behaves differently across filesystems, so Linux ext4 + macOS APFS
-# + Windows NTFS each exercise a different code path; (2) the file-
-# lock helper used by seal.WriteFile has platform-specific syscalls,
-# and only a real matrix proves they all work.
+# reasons: (1) case-true path resolution behaves differently across
+# filesystems, so Linux ext4 + macOS APFS + Windows NTFS each
+# exercise a different code path; (2) the file-lock helper used by
+# seal.WriteFile has platform-specific syscalls, and only a real
+# matrix proves they all work.
 #
 # We don't run go-vet via a separate step because `go test` already
 # runs the vet checks Go ships by default. We do run an explicit

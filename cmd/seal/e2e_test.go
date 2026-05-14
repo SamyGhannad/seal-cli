@@ -58,6 +58,11 @@ func buildSealBinary(t *testing.T) string {
 	t.Helper()
 	root := findModuleRoot(t)
 	out := filepath.Join(t.TempDir(), "seal")
+	// Windows refuses to exec a file without an executable extension; both
+	// `go build -o` and the later exec.Command need the same path.
+	if runtime.GOOS == "windows" {
+		out += ".exe"
+	}
 
 	cmd := exec.Command("go", "build", "-o", out, "./cmd/seal")
 	cmd.Dir = root
